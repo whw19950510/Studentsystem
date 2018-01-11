@@ -47,4 +47,8 @@ public class StudentDbUtil {
 			e.printStackTrace();
 		}
 	}
+	public void addStudent(Student newstudent) {
+		
+		
+	}
 }
