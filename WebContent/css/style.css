@@ -4,15 +4,46 @@ html, body{
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 }
 
+#submit {
+	display:inline-block;
+	margin-right:10px;
+	float:left;
+	margin-top:30px;
+	margin-left:500px;
+}
+
+#cancel {
+	display:inline-block;
+	float:left;
+	margin-top:25px;
+}
+
 table {   
 	border-collapse:collapse;
 	border-bottom:1px solid gray;
-	font-family: Tahoma,Verdana,Segoe,sans-serif;
+	font-family: Georgia, serif;
 	width:72%;
 }
- 
+
+a {
+	display: table-cell; 
+	vertical-align: middle;
+	padding-top:5px;
+	margin-left:8px;
+}
+#add {
+	font-size:110%;
+}
+#update {
+	font-size:110%;
+}
+i {
+	display: inline-flex;
+    vertical-align: middle;
+    right: 10px;
+}
 th {
-	border-bottom:1px solid gray;
+	/*border-bottom:1px solid gray;*/
 	background:none repeat scroll 0 0 #0775d3;
 	padding:10px;
 	color: #FFFFFF;
@@ -20,13 +51,14 @@ th {
 }
 
 tr {
-	border-top:1px solid gray;
-	text-align:center;	
+	text-align:center;
+	vertical-align: middle;	
 }
- 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #BBBBBB}	
- 
+td {
+	text-align:center;
+	vertical-align: middle;	
+} 
+
 #wrapper {width: 100%; margin-top: 0px; }
 #header {width: 70%; background: #0775d3; margin-top: 0px; padding:15px 0px 15px 15px;}
 #header h2 {width: 100%; margin:auto; color: #FFFFFF;}

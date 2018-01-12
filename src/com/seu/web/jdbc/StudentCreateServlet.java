@@ -48,24 +48,23 @@ public class StudentCreateServlet extends HttpServlet {
 	}
 
 	private void addStudent(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/show-students.jsp");
-		dispatcher.forward(request, response);
+		
 		// read parameter from forms
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
-		long id = Integer.parseInt(request.getParameter("id"));
-		Student newstu = new Student(firstname,lastname,id,email);
+		Student newstu = new Student(firstname,lastname,email);
 		// add to database
 		studentdbutil.addStudent(newstu);
-		response.sendRedirect("/show-students.jsp");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/StudentControllerServlet");
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		doGet(request,response);
 	}
 }

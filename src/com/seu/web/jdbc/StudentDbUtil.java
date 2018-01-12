@@ -1,7 +1,9 @@
 package com.seu.web.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +49,22 @@ public class StudentDbUtil {
 			e.printStackTrace();
 		}
 	}
-	public void addStudent(Student newstudent) {
-		
+	public void addStudent(Student newstudent) throws SQLException {
+		Connection myconn = null;
+		PreparedStatement myst = null;
+		try {
+			myconn = datasource.getConnection();
+			String sqlqu = "insert into student (first_name, last_name, email) values (?, ?, ?)";
+			myst = myconn.prepareStatement(sqlqu);
+			myst.setString(1, newstudent.getFirstname());
+			myst.setString(2, newstudent.getLastname());
+			myst.setString(3, newstudent.getEmail());
+			myst.execute();
+		} catch(Exception e) {
+			throw new SQLException(e);
+		} finally {
+			close(myconn,myst,null);
+		}
 		
 	}
 }

@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link type = "text/css" rel="stylesheet" href = "css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Student Information</title>
@@ -16,12 +17,13 @@
 
 	<div class = "container" >
 		<div id = "content">
-			<table class = "table table-hover">
+			<table class = "table table-striped">
 				<tr>
 					<th>ID</th>
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email</th>
+					<th>Action</th>
 				</tr>   	
 				<c:forEach items = "${show_students}" var = "currentstu">
 					<tr>
@@ -37,11 +39,14 @@
 						<td>
 							<c:out value = "${currentstu.getEmail()}"></c:out>
 						</td>
+						<td>
+							<a id = "update" class ="btn btn-sm btn-info" href = "update-student-form.jsp"><i class="tiny material-icons">edit</i>Update</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
-		<a class = "btn btn-primary" href = "add-student-form.jsp">Add Student</a>
+		<a id = "add" class = "btn btn-primary" role="button" href = "add-student-form.jsp"><i class="tiny material-icons">add_circle</i>Add Student</a>
 	</div>
 </body>
 </html>
