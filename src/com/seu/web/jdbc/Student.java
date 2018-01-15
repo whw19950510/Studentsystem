@@ -3,10 +3,10 @@ package com.seu.web.jdbc;
 public class Student {
 	private String firstname;
 	private String lastname;
-	private long id;
+	private int id;
 	private String email;
 	
-	public Student(String firstname, String lastname, long id, String email) {
+	public Student(String firstname, String lastname, int id, String email) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.id = id;
@@ -32,10 +32,10 @@ public class Student {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getEmail() {

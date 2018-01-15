@@ -4,7 +4,7 @@ html, body{
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 }
 
-#submit {
+.submit {
 	display:inline-block;
 	margin-right:10px;
 	float:left;
@@ -12,7 +12,7 @@ html, body{
 	margin-left:500px;
 }
 
-#cancel {
+.cancel {
 	display:inline-block;
 	float:left;
 	margin-top:25px;
@@ -35,6 +35,9 @@ a {
 	font-size:110%;
 }
 #update {
+	font-size:110%;
+}
+#delete {
 	font-size:110%;
 }
 i {

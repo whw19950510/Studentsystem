@@ -27,7 +27,7 @@ public class StudentDbUtil {
 			myst = myconn.createStatement();
 			myrs = myst.executeQuery(sqlqu);
 			while(myrs.next()) {
-				long Id = myrs.getInt("id");
+				int Id = myrs.getInt("id");
 				String Firstname = myrs.getString("first_name");
 				String Lastname = myrs.getString("last_name");
 				String Email = myrs.getString("email");
@@ -66,5 +66,75 @@ public class StudentDbUtil {
 			close(myconn,myst,null);
 		}
 		
+	}
+	public Student getStudent(String id) throws SQLException {
+		Student tobefind = null;
+		Connection myconn = null;
+		PreparedStatement myst = null;
+		ResultSet myrs = null;
+		int studentid = Integer.parseInt(id);
+		try {
+			myconn = datasource.getConnection();
+			String sqlqu = "select * from student where id=? ";
+			myst = myconn.prepareStatement(sqlqu);
+			myst.setInt(1, studentid);
+			myrs = myst.executeQuery();
+			if(myrs.next()) {
+				String Firstname = myrs.getString("first_name");
+				String Lastname = myrs.getString("last_name");
+				String Email = myrs.getString("email");
+				tobefind = new Student(Firstname, Lastname, studentid, Email);
+			}
+		} catch(Exception e) {
+			throw new SQLException(e);
+		} finally {
+			close(myconn,myst,myrs);
+		}
+		return tobefind;
+	}
+public void updateStudent(Student theStudent) throws Exception {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+
+		try {
+			// get db connection
+			myConn = datasource.getConnection();
+			
+			// create SQL update statement
+			String sql = "update student "
+						+ "set first_name=?, last_name=?, email=? "
+						+ "where id=?";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+			
+			// set params
+			myStmt.setString(1, theStudent.getFirstname());
+			myStmt.setString(2, theStudent.getLastname());
+			myStmt.setString(3, theStudent.getEmail());
+			myStmt.setInt(4, theStudent.getId());
+			
+			// execute SQL statement
+			myStmt.execute();
+		}
+		finally {
+			// clean up JDBC objects
+			close(myConn, myStmt, null);
+		}
+	}
+	public void deleteStudent(String deleteid) throws SQLException {
+		int todelete = Integer.parseInt(deleteid);
+		Connection myconn = null;
+		PreparedStatement myst = null;
+		try {
+			myconn = datasource.getConnection();
+			String sqlqu = "delete from student where id=?";
+			myst = myconn.prepareStatement(sqlqu);
+			myst.setInt(1, todelete);
+			myst.execute();
+		} finally {
+			close(myconn, myst, null);
+		}
 	}
 }

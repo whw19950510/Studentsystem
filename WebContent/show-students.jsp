@@ -26,6 +26,14 @@
 					<th>Action</th>
 				</tr>   	
 				<c:forEach items = "${show_students}" var = "currentstu">
+					<!-- link for update student -->
+					<c:url var = "tempLink" value = "StudentLoadServlet">
+						<c:param name= "studentId" value = "${currentstu.getId()}" />
+					</c:url>
+					<!-- link for delete student  -->
+					<c:url var = "deleteLink" value = "StudentDeleteServlet">
+						<c:param name= "deleteId" value = "${currentstu.getId()}" />
+					</c:url>
 					<tr>
 						<td>
 							<c:out value="${currentstu.getId()}"></c:out>
@@ -40,7 +48,8 @@
 							<c:out value = "${currentstu.getEmail()}"></c:out>
 						</td>
 						<td>
-							<a id = "update" class ="btn btn-sm btn-info" href = "update-student-form.jsp"><i class="tiny material-icons">edit</i>Update</a>
+							<a id = "update" class ="btn btn-xs btn-info" href = "${tempLink}"><i class="tiny material-icons">edit</i>Update</a>
+							<a id = "delete" class ="btn btn-xs btn-danger" href = "${deleteLink}" onclick = "if(!(confirm('Are you sure to delete this student from system'))) return false"><i class="tiny material-icons">delete</i>Delete</a>
 						</td>
 					</tr>
 				</c:forEach>

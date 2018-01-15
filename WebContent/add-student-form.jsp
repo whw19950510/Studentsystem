@@ -60,12 +60,10 @@
 			      <label for="inputZip">Zip</label>
 			      <input type="text" name = "zip" class="form-control" id="inputZip">
 			    </div>
-		  	</div>
-		  	
-		  		<button id = "submit" type="submit" class="btn btn-primary">Sign up</button>
-			
+		  	</div>	  	
+		  		<button type="submit" class="submit btn btn-primary">Sign up</button>
 		</form>
-		<a id = "cancel" href = "StudentControllerServlet"><button type = button" class="btn btn-danger" >Cancel</button></a>
+		<a class = "cancel" href = "StudentControllerServlet"><button type = button" class="btn btn-danger" >Cancel</button></a>
 	</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,21 +13,22 @@
 </head>
 <body>
 	<div class = "container" >
-		<form action = "StudentCreateServlet" method = "POST">
+		<form action = "StudentUpdateServlet" method = "POST">
+			<input type = "text" name = "studentId" value = "${edit_student.id}"/>
 			<div class="form-row">
 			    <div class="form-group col-md-6">
 			      <label for="firstName">Firstname</label>
-			      <input type="text" name = "firstname" class="form-control" id="firstName" placeholder="Firstname">
+			      <input type="text" name = "firstName" class="form-control" id="firstName" value="${edit_student.firstname}">
 			    </div>
 			    <div class="form-group col-md-6">
 			      <label for="lastName">Lastname</label>
-			      <input type="text" name = "lastname" class="form-control" id="lastName" placeholder="Lastname">
+			      <input type="text" name = "lastName" class="form-control" id="lastName" value="${edit_student.lastname}">
 			    </div>
 	 		</div>
 	 		<div class="form-row">
 			   	<div class="form-group col-md-6">
 			      <label for="inputEmail4">Email</label>
-			      <input type="email" name = "email" class="form-control" id="inputEmail4" placeholder="Email">
+			      <input type="email" name = "email" class="form-control" id="inputEmail4" value="${edit_student.email}">
 			   	</div>
 			    <div class="form-group col-md-6">
 			      <label for="inputPassword4">Password</label>
@@ -60,11 +62,9 @@
 			      <input type="text" name = "zip" class="form-control" id="inputZip">
 			    </div>
 		  	</div>
-		  	<div class = "container" >
-		  		<button type="submit" class="btn btn-primary">Sign up</button>
-		  		<button type="submit" class="btn btn-danger" href = "StudentControllerServlet">Cancel</button>
-		  	</div>
-		</form>	
+		  	<button type="submit" class="submit btn btn-primary">Update</button>	
+		</form>
+		<a class = "cancel" href = "StudentControllerServlet"><button type = button" class="btn btn-danger" >Cancel</button></a>
 	</div>
 </body>
 </html>
